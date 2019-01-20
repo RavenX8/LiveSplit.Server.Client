@@ -15,7 +15,7 @@ using LiveSplit.UI.Components;
 
 namespace LiveSplit.Server.Client
 {
-  class Server.ClientComponent : IComponent
+  class ServerClientComponent : IComponent
   {
     private Task _thread;
     private CancellationTokenSource _cancelSource;
@@ -53,7 +53,7 @@ namespace LiveSplit.Server.Client
 
     public IDictionary<string, Action> ContextMenuControls { get; protected set; }
 
-    public Server.ClientComponent(LiveSplitState state)
+    public ServerClientComponent(LiveSplitState state)
     {
       _state = state;
       Form = state.Form;

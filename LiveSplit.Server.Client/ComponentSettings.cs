@@ -244,9 +244,9 @@ namespace LiveSplit.UI.Components
     private void connectButton_Click(object sender, EventArgs e)
     {
       connectButton.BackColor = DefaultBackColor;
-      if (Server.ClientComponent.Socket.Connected == true)
+      if (ServerClientComponent.Socket.Connected == true)
       {
-        Server.ClientComponent.Socket.Shutdown(SocketShutdown.Both);
+        ServerClientComponent.Socket.Shutdown(SocketShutdown.Both);
       }
       else
       {
@@ -268,11 +268,11 @@ namespace LiveSplit.UI.Components
         try
         {
           IPEndPoint ipe = new IPEndPoint(IpAddress, Port);
-          Server.ClientComponent.Socket.Connect(ipe);
+          ServerClientComponent.Socket.Connect(ipe);
           connectButton.BackColor = Color.Green;
 
           byte[] msg = System.Text.Encoding.ASCII.GetBytes("initgametime\r\n");
-          Server.ClientComponent.Socket.Send(msg);
+          ServerClientComponent.Socket.Send(msg);
         }
         catch (ArgumentNullException ae)
         {

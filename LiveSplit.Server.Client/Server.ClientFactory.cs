@@ -3,14 +3,14 @@ using LiveSplit.Server.Client;
 using LiveSplit.Model;
 using LiveSplit.UI.Components;
 
-[assembly: ComponentFactory(typeof(Server.ClientFactory))]
+[assembly: ComponentFactory(typeof(ServerClientComponentFactory))]
 
 namespace LiveSplit.Server.Client
 {
-  class Server.ClientFactory : IComponentFactory
+  class ServerClientComponentFactory : IComponentFactory
   {
-    public string ComponentName => "Autosplitter Client";
-    public string Description => "Support functionally to help auto splitting";
+    public string ComponentName => "Server Client";
+    public string Description => "Support functionally to help auto splitting using a remote LiveSplit Server instace";
     public ComponentCategory Category => ComponentCategory.Control;
     public Version Version => Version.Parse("1.0.0");
 
@@ -18,6 +18,6 @@ namespace LiveSplit.Server.Client
     public string UpdateURL => "";
     public string XMLURL => "";
 
-    public IComponent Create(LiveSplitState state) => new Server.ClientComponent(state);
+    public IComponent Create(LiveSplitState state) => new ServerClientComponent(state);
   }
 }
