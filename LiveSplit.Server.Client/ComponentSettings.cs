@@ -33,13 +33,7 @@ namespace LiveSplit.UI.Components
     {
       InitializeComponent();
 
-      _basic_settings = new Dictionary<string, CheckBox>
-      {
-//        // Capitalized names for saving it in XML.
-//        ["Start"] = checkboxStart,
-//        ["Reset"] = checkboxReset,
-//        ["Split"] = checkboxSplit
-      };
+      _basic_settings = new Dictionary<string, CheckBox>();
 
       _basic_settings_state = new Dictionary<string, bool>();
       _custom_settings_state = new Dictionary<string, bool>();
@@ -246,7 +240,7 @@ namespace LiveSplit.UI.Components
       connectButton.BackColor = DefaultBackColor;
       if (ServerClientComponent.Socket.Connected == true)
       {
-        ServerClientComponent.Socket.Shutdown(SocketShutdown.Both);
+        ServerClientComponent.Socket.Disconnect(true);
       }
       else
       {

@@ -94,6 +94,8 @@ namespace LiveSplit.Server.Client
       _state.OnSplit -= gameProcess_OnSplit;
       _state.OnReset -= gameProcess_OnReset;
       _state.OnStart -= gameProcess_OnStart;
+      _state.OnSwitchComparisonNext -= gameProcess_OnSwitchComparison;
+      _state.OnSwitchComparisonPrevious -= gameProcess_OnSwitchComparison;
 
       if (Socket.Connected == true)
       {
@@ -133,7 +135,7 @@ namespace LiveSplit.Server.Client
     {
       if (Socket.Connected == true)
       {
-        Socket.Shutdown(SocketShutdown.Both);
+        Socket.Disconnect(true);
       }
 
       ContextMenuControls.Clear();
