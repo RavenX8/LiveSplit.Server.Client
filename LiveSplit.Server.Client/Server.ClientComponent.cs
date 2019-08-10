@@ -147,7 +147,10 @@ namespace LiveSplit.Server.Client
       if (Socket.Connected == false)
         return;
 
-      byte[] msg = System.Text.Encoding.ASCII.GetBytes("starttimer\r\n");
+      byte[] msg = System.Text.Encoding.ASCII.GetBytes("initgametime\r\n");
+      Form.BeginInvoke(new Action(() => Socket.Send(msg)));
+
+      msg = System.Text.Encoding.ASCII.GetBytes("starttimer\r\n");
       Form.BeginInvoke(new Action(() => Socket.Send(msg)));
     }
 
@@ -261,7 +264,7 @@ namespace LiveSplit.Server.Client
                 }
 
                 //TODO: Figure out why the game time is all messed up
-                msg = System.Text.Encoding.ASCII.GetBytes("setgametime " + _state.CurrentTime.GameTime.ToString() + "\r\n");
+                msg = System.Text.Encoding.ASCII.GetBytes("setgametime " + _state.CurrentTime.GameTime + "\r\n");
                 Form.BeginInvoke(new Action(() => Socket.Send(msg)));
 
                 msg = System.Text.Encoding.ASCII.GetBytes("setloadingtimes " + _state.LoadingTimes.TotalMilliseconds.ToString() + "\r\n");
